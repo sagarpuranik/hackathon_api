@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JDCTSDBModelStoreContainer" CdmEntityContainer="JDCTSDBEntities">
+    <EntitySetMapping Name="MasterDataTables">
+      <EntityTypeMapping TypeName="JDCTSDBModel.MasterDataTable">
+        <MappingFragment StoreEntitySet="MasterDataTable">
+          <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
+          <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
+          <ScalarProperty Name="RacfID" ColumnName="RacfID" />
+          <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
+          <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PoNo" ColumnName="PoNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="AssociateStatus" ColumnName="AssociateStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectManagerDetails">
+      <EntityTypeMapping TypeName="JDCTSDBModel.ProjectManagerDetail">
+        <MappingFragment StoreEntitySet="ProjectManagerDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_FetchData" FunctionName="JDCTSDBModel.Store.SP_FetchData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JDCTSDBModel.SP_FetchData_Result">
+          <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
+          <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
+          <ScalarProperty Name="RacfID" ColumnName="RacfID" />
+          <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
+          <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
+          <ScalarProperty Name="PoNo" ColumnName="PoNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="AssociateStatus" ColumnName="AssociateStatus" />
+          <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+          <ScalarProperty Name="NumberHours" ColumnName="NumberHours" />
+          <ScalarProperty Name="BillingWeek" ColumnName="BillingWeek" />
+          <ScalarProperty Name="BillingMonth" ColumnName="BillingMonth" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="JDCTSDBModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="JDCTSDBModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="JDCTSDBModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="JDCTSDBModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JDCTSDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="JDCTSDBModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JDCTSDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_InsertAssociateBilling" FunctionName="JDCTSDBModel.Store.SP_InsertAssociateBilling">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JDCTSDBModel.SP_InsertAssociateBilling_Result">
+          <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
+          <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
+          <ScalarProperty Name="RacfID" ColumnName="RacfID" />
+          <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
+          <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
+          <ScalarProperty Name="Week1" ColumnName="Week1" />
+          <ScalarProperty Name="Week2" ColumnName="Week2" />
+          <ScalarProperty Name="Week3" ColumnName="Week3" />
+          <ScalarProperty Name="Week4" ColumnName="Week4" />
+          <ScalarProperty Name="Week5" ColumnName="Week5" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="PoNo" ColumnName="PoNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="AssociateStatus" ColumnName="AssociateStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_PMOUserOrNot" FunctionName="JDCTSDBModel.Store.SP_PMOUserOrNot">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JDCTSDBModel.SP_PMOUserOrNot_Result">
+          <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
+          <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
+          <ScalarProperty Name="RacfID" ColumnName="RacfID" />
+          <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
+          <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
+          <ScalarProperty Name="Week1" ColumnName="Week1" />
+          <ScalarProperty Name="Week2" ColumnName="Week2" />
+          <ScalarProperty Name="Week3" ColumnName="Week3" />
+          <ScalarProperty Name="Week4" ColumnName="Week4" />
+          <ScalarProperty Name="Week5" ColumnName="Week5" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="PoNo" ColumnName="PoNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="AssociateStatus" ColumnName="AssociateStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="JDCTSDBModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="JDCTSDBModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="SP_Weekwise" FunctionName="JDCTSDBModel.Store.SP_Weekwise">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JDCTSDBModel.SP_Weekwise_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="Week1" ColumnName="Week1" />
+          <ScalarProperty Name="Week2" ColumnName="Week2" />
+          <ScalarProperty Name="Week3" ColumnName="Week3" />
+          <ScalarProperty Name="Week4" ColumnName="Week4" />
+          <ScalarProperty Name="Week5" ColumnName="Week5" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="AssociateBilingDetails">
+      <EntityTypeMapping TypeName="JDCTSDBModel.AssociateBilingDetail">
+        <MappingFragment StoreEntitySet="AssociateBilingDetails">
+          <ScalarProperty Name="NumberHours" ColumnName="NumberHours" />
+          <ScalarProperty Name="BillingWeek" ColumnName="BillingWeek" />
+          <ScalarProperty Name="BillingMonth" ColumnName="BillingMonth" />
+          <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_UpdateBilling" FunctionName="JDCTSDBModel.Store.SP_UpdateBilling">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JDCTSDBModel.SP_UpdateBilling_Result">
+          <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
+          <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
+          <ScalarProperty Name="RacfID" ColumnName="RacfID" />
+          <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
+          <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
+          <ScalarProperty Name="Week1" ColumnName="Week1" />
+          <ScalarProperty Name="Week2" ColumnName="Week2" />
+          <ScalarProperty Name="Week3" ColumnName="Week3" />
+          <ScalarProperty Name="Week4" ColumnName="Week4" />
+          <ScalarProperty Name="Week5" ColumnName="Week5" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="PoNo" ColumnName="PoNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="AssociateStatus" ColumnName="AssociateStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

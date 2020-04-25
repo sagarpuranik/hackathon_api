@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JDCTSDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'JDCTSDB.dbo.AssociateBilingDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AssociateBilingDetails">
+          <Key>
+            <PropertyRef Name="AssociateID" />
+          </Key>
+          <Property Name="AssociateID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="BillingMonth" Type="int" />
+          <Property Name="BillingWeek" Type="int" />
+          <Property Name="NumberHours" Type="int" />
+        </EntityType>
+        <EntityType Name="MasterDataTable">
+          <Key>
+            <PropertyRef Name="AssociateID" />
+          </Key>
+          <Property Name="AssociateID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AssociateName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RacfID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ProjectManager" Type="varchar" MaxLength="100" />
+          <Property Name="CostCentre" Type="varchar" MaxLength="20" />
+          <Property Name="UserRole" Type="varchar" MaxLength="20" />
+          <Property Name="TotalHours" Type="int" />
+          <Property Name="Rate" Type="money" />
+          <Property Name="TotalAmount" Type="money" StoreGeneratedPattern="Computed" />
+          <Property Name="PoNo" Type="varchar" MaxLength="20" />
+          <Property Name="InvoiceNo" Type="varchar" MaxLength="20" />
+          <Property Name="AssociateStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProjectManagerDetails">
+          <Key>
+            <PropertyRef Name="NAME" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CostCentre" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__Associate__Assoc__29572725">
+          <End Role="MasterDataTable" Type="Self.MasterDataTable" Multiplicity="1" />
+          <End Role="AssociateBilingDetails" Type="Self.AssociateBilingDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MasterDataTable">
+              <PropertyRef Name="AssociateID" />
+            </Principal>
+            <Dependent Role="AssociateBilingDetails">
+              <PropertyRef Name="AssociateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MasterDat__Proje__25869641">
+          <End Role="ProjectManagerDetails" Type="Self.ProjectManagerDetails" Multiplicity="0..1" />
+          <End Role="MasterDataTable" Type="Self.MasterDataTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectManagerDetails">
+              <PropertyRef Name="NAME" />
+            </Principal>
+            <Dependent Role="MasterDataTable">
+              <PropertyRef Name="ProjectManager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_FetchData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="JDCTSDBModelStoreContainer">
+          <EntitySet Name="MasterDataTable" EntityType="Self.MasterDataTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectManagerDetails" EntityType="Self.ProjectManagerDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssociateBilingDetails" EntityType="Self.AssociateBilingDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AssociateBilingDetails].[AssociateID] AS [AssociateID], 
+    [AssociateBilingDetails].[BillingMonth] AS [BillingMonth], 
+    [AssociateBilingDetails].[BillingWeek] AS [BillingWeek], 
+    [AssociateBilingDetails].[NumberHours] AS [NumberHours]
+    FROM [dbo].[AssociateBilingDetails] AS [AssociateBilingDetails]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Associate__Assoc__29572725" Association="Self.FK__Associate__Assoc__29572725">
+            <End Role="MasterDataTable" EntitySet="MasterDataTable" />
+            <End Role="AssociateBilingDetails" EntitySet="AssociateBilingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MasterDat__Proje__25869641" Association="Self.FK__MasterDat__Proje__25869641">
+            <End Role="ProjectManagerDetails" EntitySet="ProjectManagerDetails" />
+            <End Role="MasterDataTable" EntitySet="MasterDataTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JDCTSDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MasterDataTable">
+          <Key>
+            <PropertyRef Name="AssociateID" />
+          </Key>
+          <Property Name="AssociateID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AssociateName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RacfID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProjectManager" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CostCentre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TotalHours" Type="Int32" />
+          <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="PoNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AssociateStatus" Type="Boolean" />
+          <NavigationProperty Name="AssociateBilingDetail" Relationship="Self.FK__Associate__Assoc__29572725" FromRole="MasterDataTable" ToRole="AssociateBilingDetails" />
+          <NavigationProperty Name="ProjectManagerDetail" Relationship="Self.FK__MasterDat__Proje__25869641" FromRole="MasterDataTable" ToRole="ProjectManagerDetails" />
+        </EntityType>
+        <EntityType Name="ProjectManagerDetail">
+          <Key>
+            <PropertyRef Name="NAME" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CostCentre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MasterDataTables" Relationship="Self.FK__MasterDat__Proje__25869641" FromRole="ProjectManagerDetails" ToRole="MasterDataTable" />
+        </EntityType>
+        <EntityType Name="AssociateBilingDetail">
+          <Key>
+            <PropertyRef Name="AssociateID" />
+          </Key>
+          <Property Name="AssociateID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BillingMonth" Type="Int32" />
+          <Property Name="BillingWeek" Type="Int32" />
+          <Property Name="NumberHours" Type="Int32" />
+          <NavigationProperty Name="MasterDataTable" Relationship="Self.FK__Associate__Assoc__29572725" FromRole="AssociateBilingDetails" ToRole="MasterDataTable" />
+        </EntityType>
+        <Association Name="FK__Associate__Assoc__29572725">
+          <End Role="MasterDataTable" Type="Self.MasterDataTable" Multiplicity="1" />
+          <End Role="AssociateBilingDetails" Type="Self.AssociateBilingDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MasterDataTable">
+              <PropertyRef Name="AssociateID" />
+            </Principal>
+            <Dependent Role="AssociateBilingDetails">
+              <PropertyRef Name="AssociateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MasterDat__Proje__25869641">
+          <End Role="ProjectManagerDetails" Type="Self.ProjectManagerDetail" Multiplicity="0..1" />
+          <End Role="MasterDataTable" Type="Self.MasterDataTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectManagerDetails">
+              <PropertyRef Name="NAME" />
+            </Principal>
+            <Dependent Role="MasterDataTable">
+              <PropertyRef Name="ProjectManager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JDCTSDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MasterDataTables" EntityType="Self.MasterDataTable" />
+          <EntitySet Name="ProjectManagerDetails" EntityType="Self.ProjectManagerDetail" />
+          <EntitySet Name="AssociateBilingDetails" EntityType="Self.AssociateBilingDetail" />
+          <AssociationSet Name="FK__Associate__Assoc__29572725" Association="Self.FK__Associate__Assoc__29572725">
+            <End Role="MasterDataTable" EntitySet="MasterDataTables" />
+            <End Role="AssociateBilingDetails" EntitySet="AssociateBilingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MasterDat__Proje__25869641" Association="Self.FK__MasterDat__Proje__25869641">
+            <End Role="ProjectManagerDetails" EntitySet="ProjectManagerDetails" />
+            <End Role="MasterDataTable" EntitySet="MasterDataTables" />
+          </AssociationSet>
+          <FunctionImport Name="SP_FetchData" ReturnType="Collection(JDCTSDBModel.SP_FetchData_Result)" />
+        </EntityContainer>
+        <ComplexType Name="SP_FetchData_Result">
+          <Property Type="String" Name="AssociateID" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="AssociateName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="RacfID" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="ProjectManager" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CostCentre" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PoNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="InvoiceNo" Nullable="true" MaxLength="20" />
+          <Property Type="Boolean" Name="AssociateStatus" Nullable="true" />
+          <Property Type="Int32" Name="TotalHours" Nullable="true" />
+          <Property Type="Int32" Name="NumberHours" Nullable="true" />
+          <Property Type="Int32" Name="BillingWeek" Nullable="true" />
+          <Property Type="Int32" Name="BillingMonth" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JDCTSDBModelStoreContainer" CdmEntityContainer="JDCTSDBEntities">
+          <EntitySetMapping Name="MasterDataTables">
+            <EntityTypeMapping TypeName="JDCTSDBModel.MasterDataTable">
+              <MappingFragment StoreEntitySet="MasterDataTable">
+                <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
+                <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
+                <ScalarProperty Name="RacfID" ColumnName="RacfID" />
+                <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
+                <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PoNo" ColumnName="PoNo" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="AssociateStatus" ColumnName="AssociateStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectManagerDetails">
+            <EntityTypeMapping TypeName="JDCTSDBModel.ProjectManagerDetail">
+              <MappingFragment StoreEntitySet="ProjectManagerDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssociateBilingDetails">
+            <EntityTypeMapping TypeName="JDCTSDBModel.AssociateBilingDetail">
+              <MappingFragment StoreEntitySet="AssociateBilingDetails">
+                <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
+                <ScalarProperty Name="BillingMonth" ColumnName="BillingMonth" />
+                <ScalarProperty Name="BillingWeek" ColumnName="BillingWeek" />
+                <ScalarProperty Name="NumberHours" ColumnName="NumberHours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_FetchData" FunctionName="JDCTSDBModel.Store.SP_FetchData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="JDCTSDBModel.SP_FetchData_Result">
+                <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
+                <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
+                <ScalarProperty Name="RacfID" ColumnName="RacfID" />
+                <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
+                <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
+                <ScalarProperty Name="PoNo" ColumnName="PoNo" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="AssociateStatus" ColumnName="AssociateStatus" />
+                <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+                <ScalarProperty Name="NumberHours" ColumnName="NumberHours" />
+                <ScalarProperty Name="BillingWeek" ColumnName="BillingWeek" />
+                <ScalarProperty Name="BillingMonth" ColumnName="BillingMonth" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

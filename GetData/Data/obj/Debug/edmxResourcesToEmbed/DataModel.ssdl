@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JDCTSDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'JDCTSDB.dbo.AssociateBilingDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AssociateBilingDetails">
+    <Key>
+      <PropertyRef Name="AssociateID" />
+    </Key>
+    <Property Name="AssociateID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="BillingMonth" Type="int" />
+    <Property Name="BillingWeek" Type="int" />
+    <Property Name="NumberHours" Type="int" />
+  </EntityType>
+  <EntityType Name="MasterDataTable">
+    <Key>
+      <PropertyRef Name="AssociateID" />
+    </Key>
+    <Property Name="AssociateID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AssociateName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="RacfID" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="ProjectManager" Type="varchar" MaxLength="100" />
+    <Property Name="CostCentre" Type="varchar" MaxLength="20" />
+    <Property Name="UserRole" Type="varchar" MaxLength="20" />
+    <Property Name="TotalHours" Type="int" />
+    <Property Name="Rate" Type="money" />
+    <Property Name="TotalAmount" Type="money" StoreGeneratedPattern="Computed" />
+    <Property Name="PoNo" Type="varchar" MaxLength="20" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="20" />
+    <Property Name="AssociateStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="ProjectManagerDetails">
+    <Key>
+      <PropertyRef Name="NAME" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CostCentre" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__Associate__Assoc__29572725">
+    <End Role="MasterDataTable" Type="Self.MasterDataTable" Multiplicity="1" />
+    <End Role="AssociateBilingDetails" Type="Self.AssociateBilingDetails" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MasterDataTable">
+        <PropertyRef Name="AssociateID" />
+      </Principal>
+      <Dependent Role="AssociateBilingDetails">
+        <PropertyRef Name="AssociateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MasterDat__Proje__25869641">
+    <End Role="ProjectManagerDetails" Type="Self.ProjectManagerDetails" Multiplicity="0..1" />
+    <End Role="MasterDataTable" Type="Self.MasterDataTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectManagerDetails">
+        <PropertyRef Name="NAME" />
+      </Principal>
+      <Dependent Role="MasterDataTable">
+        <PropertyRef Name="ProjectManager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_FetchData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="JDCTSDBModelStoreContainer">
+    <EntitySet Name="MasterDataTable" EntityType="Self.MasterDataTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectManagerDetails" EntityType="Self.ProjectManagerDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssociateBilingDetails" EntityType="Self.AssociateBilingDetails" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AssociateBilingDetails].[AssociateID] AS [AssociateID], 
+    [AssociateBilingDetails].[BillingMonth] AS [BillingMonth], 
+    [AssociateBilingDetails].[BillingWeek] AS [BillingWeek], 
+    [AssociateBilingDetails].[NumberHours] AS [NumberHours]
+    FROM [dbo].[AssociateBilingDetails] AS [AssociateBilingDetails]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Associate__Assoc__29572725" Association="Self.FK__Associate__Assoc__29572725">
+      <End Role="MasterDataTable" EntitySet="MasterDataTable" />
+      <End Role="AssociateBilingDetails" EntitySet="AssociateBilingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MasterDat__Proje__25869641" Association="Self.FK__MasterDat__Proje__25869641">
+      <End Role="ProjectManagerDetails" EntitySet="ProjectManagerDetails" />
+      <End Role="MasterDataTable" EntitySet="MasterDataTable" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JDCTSDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MasterDataTable">
+    <Key>
+      <PropertyRef Name="AssociateID" />
+    </Key>
+    <Property Name="AssociateID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AssociateName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RacfID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProjectManager" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CostCentre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserRole" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TotalHours" Type="Int32" />
+    <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="PoNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="InvoiceNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AssociateStatus" Type="Boolean" />
+    <NavigationProperty Name="AssociateBilingDetail" Relationship="Self.FK__Associate__Assoc__29572725" FromRole="MasterDataTable" ToRole="AssociateBilingDetails" />
+    <NavigationProperty Name="ProjectManagerDetail" Relationship="Self.FK__MasterDat__Proje__25869641" FromRole="MasterDataTable" ToRole="ProjectManagerDetails" />
+  </EntityType>
+  <EntityType Name="ProjectManagerDetail">
+    <Key>
+      <PropertyRef Name="NAME" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CostCentre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MasterDataTables" Relationship="Self.FK__MasterDat__Proje__25869641" FromRole="ProjectManagerDetails" ToRole="MasterDataTable" />
+  </EntityType>
+  <EntityType Name="AssociateBilingDetail">
+    <Key>
+      <PropertyRef Name="AssociateID" />
+    </Key>
+    <Property Name="AssociateID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BillingMonth" Type="Int32" />
+    <Property Name="BillingWeek" Type="Int32" />
+    <Property Name="NumberHours" Type="Int32" />
+    <NavigationProperty Name="MasterDataTable" Relationship="Self.FK__Associate__Assoc__29572725" FromRole="AssociateBilingDetails" ToRole="MasterDataTable" />
+  </EntityType>
+  <Association Name="FK__Associate__Assoc__29572725">
+    <End Role="MasterDataTable" Type="Self.MasterDataTable" Multiplicity="1" />
+    <End Role="AssociateBilingDetails" Type="Self.AssociateBilingDetail" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MasterDataTable">
+        <PropertyRef Name="AssociateID" />
+      </Principal>
+      <Dependent Role="AssociateBilingDetails">
+        <PropertyRef Name="AssociateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MasterDat__Proje__25869641">
+    <End Role="ProjectManagerDetails" Type="Self.ProjectManagerDetail" Multiplicity="0..1" />
+    <End Role="MasterDataTable" Type="Self.MasterDataTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectManagerDetails">
+        <PropertyRef Name="NAME" />
+      </Principal>
+      <Dependent Role="MasterDataTable">
+        <PropertyRef Name="ProjectManager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JDCTSDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MasterDataTables" EntityType="Self.MasterDataTable" />
+    <EntitySet Name="ProjectManagerDetails" EntityType="Self.ProjectManagerDetail" />
+    <EntitySet Name="AssociateBilingDetails" EntityType="Self.AssociateBilingDetail" />
+    <AssociationSet Name="FK__Associate__Assoc__29572725" Association="Self.FK__Associate__Assoc__29572725">
+      <End Role="MasterDataTable" EntitySet="MasterDataTables" />
+      <End Role="AssociateBilingDetails" EntitySet="AssociateBilingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MasterDat__Proje__25869641" Association="Self.FK__MasterDat__Proje__25869641">
+      <End Role="ProjectManagerDetails" EntitySet="ProjectManagerDetails" />
+      <End Role="MasterDataTable" EntitySet="MasterDataTables" />
+    </AssociationSet>
+    <FunctionImport Name="SP_FetchData" ReturnType="Collection(JDCTSDBModel.SP_FetchData_Result)" />
+  </EntityContainer>
+  <ComplexType Name="SP_FetchData_Result">
+    <Property Type="String" Name="AssociateID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="AssociateName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="RacfID" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="ProjectManager" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CostCentre" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="PoNo" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="InvoiceNo" Nullable="true" MaxLength="20" />
+    <Property Type="Boolean" Name="AssociateStatus" Nullable="true" />
+    <Property Type="Int32" Name="TotalHours" Nullable="true" />
+    <Property Type="Int32" Name="NumberHours" Nullable="true" />
+    <Property Type="Int32" Name="BillingWeek" Nullable="true" />
+    <Property Type="Int32" Name="BillingMonth" Nullable="true" />
+  </ComplexType>
+</Schema>
