@@ -35,11 +35,11 @@ public partial class JDCTSDBEntities : DbContext
     }
 
 
-    public virtual DbSet<MasterDataTable> MasterDataTables { get; set; }
-
     public virtual DbSet<ProjectManagerDetail> ProjectManagerDetails { get; set; }
 
     public virtual DbSet<AssociateBilingDetail> AssociateBilingDetails { get; set; }
+
+    public virtual DbSet<MasterDataTable> MasterDataTables { get; set; }
 
 
     public virtual ObjectResult<SP_FetchData_Result> SP_FetchData()
@@ -217,24 +217,7 @@ public partial class JDCTSDBEntities : DbContext
     }
 
 
-    public virtual ObjectResult<SP_Weekwise_Result> SP_Weekwise(string userid, string month)
-    {
-
-        var useridParameter = userid != null ?
-            new ObjectParameter("userid", userid) :
-            new ObjectParameter("userid", typeof(string));
-
-
-        var monthParameter = month != null ?
-            new ObjectParameter("month", month) :
-            new ObjectParameter("month", typeof(string));
-
-
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Weekwise_Result>("SP_Weekwise", useridParameter, monthParameter);
-    }
-
-
-    public virtual ObjectResult<SP_UpdateBilling_Result> SP_UpdateBilling(Nullable<int> userid, Nullable<int> month, Nullable<int> week1, Nullable<int> week2, Nullable<int> week3, Nullable<int> week4, Nullable<int> week5)
+    public virtual ObjectResult<SP_UpdateBilling_Result> SP_UpdateBilling(Nullable<int> userid, Nullable<int> month, Nullable<int> week1, Nullable<int> week2, Nullable<int> week3, Nullable<int> week4, Nullable<int> week5, string manager, string cost, Nullable<decimal> rate, string pono, string invoice, Nullable<bool> status)
     {
 
         var useridParameter = userid.HasValue ?
@@ -272,7 +255,37 @@ public partial class JDCTSDBEntities : DbContext
             new ObjectParameter("week5", typeof(int));
 
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_UpdateBilling_Result>("SP_UpdateBilling", useridParameter, monthParameter, week1Parameter, week2Parameter, week3Parameter, week4Parameter, week5Parameter);
+        var managerParameter = manager != null ?
+            new ObjectParameter("manager", manager) :
+            new ObjectParameter("manager", typeof(string));
+
+
+        var costParameter = cost != null ?
+            new ObjectParameter("cost", cost) :
+            new ObjectParameter("cost", typeof(string));
+
+
+        var rateParameter = rate.HasValue ?
+            new ObjectParameter("rate", rate) :
+            new ObjectParameter("rate", typeof(decimal));
+
+
+        var ponoParameter = pono != null ?
+            new ObjectParameter("pono", pono) :
+            new ObjectParameter("pono", typeof(string));
+
+
+        var invoiceParameter = invoice != null ?
+            new ObjectParameter("invoice", invoice) :
+            new ObjectParameter("invoice", typeof(string));
+
+
+        var statusParameter = status.HasValue ?
+            new ObjectParameter("status", status) :
+            new ObjectParameter("status", typeof(bool));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_UpdateBilling_Result>("SP_UpdateBilling", useridParameter, monthParameter, week1Parameter, week2Parameter, week3Parameter, week4Parameter, week5Parameter, managerParameter, costParameter, rateParameter, ponoParameter, invoiceParameter, statusParameter);
     }
 
 }

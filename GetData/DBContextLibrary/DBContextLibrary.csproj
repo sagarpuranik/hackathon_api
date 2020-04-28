@@ -94,21 +94,6 @@
     <Compile Include="MasterDataTable.cs">
       <DependentUpon>DBContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model2.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.edmx</DependentUpon>
-    </Compile>
     <Compile Include="ProjectManagerDetail.cs">
       <DependentUpon>DBContext.tt</DependentUpon>
     </Compile>
@@ -131,9 +116,6 @@
     <Compile Include="SP_UpdateBilling_Result.cs">
       <DependentUpon>DBContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="SP_Weekwise_Result.cs">
-      <DependentUpon>DBContext.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DBContext.edmx">
@@ -145,13 +127,6 @@
     <None Include="App.Config" />
     <None Include="DBContext.edmx.diagram">
       <DependentUpon>DBContext.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="Model2.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model2.edmx.diagram">
-      <DependentUpon>Model2.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -165,16 +140,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBContext.edmx</DependentUpon>
       <LastGenOutput>DBContext.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model2.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model2.edmx</DependentUpon>
-      <LastGenOutput>Model2.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model2.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model2.edmx</DependentUpon>
-      <LastGenOutput>Model2.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

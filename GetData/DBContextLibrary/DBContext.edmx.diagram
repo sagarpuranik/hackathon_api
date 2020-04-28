@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4c6c081a581e4965a548006c09e95fb5" Name="Diagram1">
-        <EntityTypeShape EntityType="JDCTSDBModel.MasterDataTable" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="JDCTSDBModel.ProjectManagerDetail" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <AssociationConnector Association="JDCTSDBModel.FK__MasterDat__Proje__25869641" ManuallyRouted="false" />
         <EntityTypeShape EntityType="JDCTSDBModel.AssociateBilingDetail" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="JDCTSDBModel.MasterDataTable" Width="1.5" PointX="3" PointY="1.25" />
         <AssociationConnector Association="JDCTSDBModel.FK__Associate__Assoc__3D5E1FD2" />
-      </Diagram>
+        <AssociationConnector Association="JDCTSDBModel.FK__MasterDat__Proje__145C0A3F" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

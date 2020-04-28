@@ -27,6 +27,10 @@ public partial class SP_UpdateBilling_Result
 
     public string CostCentre { get; set; }
 
+    public string UserRole { get; set; }
+
+    public Nullable<int> NoOfWeeks { get; set; }
+
     public Nullable<int> Week1 { get; set; }
 
     public Nullable<int> Week2 { get; set; }

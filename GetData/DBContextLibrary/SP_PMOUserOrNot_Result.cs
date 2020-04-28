@@ -45,6 +45,10 @@ public partial class SP_PMOUserOrNot_Result
 
     public Nullable<bool> AssociateStatus { get; set; }
 
+    public string UserRole { get; set; }
+
+    public Nullable<int> NoOfWeeks { get; set; }
+
 }
 
 }

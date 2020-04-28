@@ -21,9 +21,7 @@ warning 6002: The table/view 'JDCTSDB.dbo.AssociateBilingDetails' does not have 
     <Property Name="ProjectManager" Type="varchar" MaxLength="100" />
     <Property Name="CostCentre" Type="varchar" MaxLength="20" />
     <Property Name="UserRole" Type="varchar" MaxLength="20" />
-    <Property Name="TotalHours" Type="int" />
     <Property Name="Rate" Type="money" />
-    <Property Name="TotalAmount" Type="money" StoreGeneratedPattern="Computed" />
     <Property Name="PoNo" Type="varchar" MaxLength="20" />
     <Property Name="InvoiceNo" Type="varchar" MaxLength="20" />
     <Property Name="AssociateStatus" Type="bit" />
@@ -107,12 +105,14 @@ warning 6002: The table/view 'JDCTSDB.dbo.AssociateBilingDetails' does not have 
     <Parameter Name="week3" Type="int" Mode="In" />
     <Parameter Name="week4" Type="int" Mode="In" />
     <Parameter Name="week5" Type="int" Mode="In" />
+    <Parameter Name="manager" Type="varchar" Mode="In" />
+    <Parameter Name="cost" Type="varchar" Mode="In" />
+    <Parameter Name="rate" Type="money" Mode="In" />
+    <Parameter Name="pono" Type="varchar" Mode="In" />
+    <Parameter Name="invoice" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="SP_Weekwise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="userid" Type="varchar" Mode="In" />
-    <Parameter Name="month" Type="varchar" Mode="In" />
-  </Function>
   <EntityContainer Name="JDCTSDBModelStoreContainer">
     <EntitySet Name="MasterDataTable" EntityType="Self.MasterDataTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProjectManagerDetails" EntityType="Self.ProjectManagerDetails" Schema="dbo" store:Type="Tables" />

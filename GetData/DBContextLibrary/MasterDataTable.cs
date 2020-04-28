@@ -30,11 +30,7 @@ public partial class MasterDataTable
 
     public string UserRole { get; set; }
 
-    public Nullable<int> TotalHours { get; set; }
-
     public Nullable<decimal> Rate { get; set; }
-
-    public Nullable<decimal> TotalAmount { get; set; }
 
     public string PoNo { get; set; }
 
@@ -43,6 +39,8 @@ public partial class MasterDataTable
     public Nullable<bool> AssociateStatus { get; set; }
 
 
+
+    public virtual AssociateBilingDetail AssociateBilingDetail { get; set; }
 
     public virtual ProjectManagerDetail ProjectManagerDetail { get; set; }
 
