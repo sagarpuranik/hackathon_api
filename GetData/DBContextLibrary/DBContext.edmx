@@ -244,41 +244,9 @@ warning 6002: The table/view 'JDCTSDB.dbo.AssociateBilingDetails' does not have 
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="SP_InsertAssociateBilling_Result">
-          <Property Type="String" Name="AssociateID" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="AssociateName" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="RacfID" Nullable="false" MaxLength="15" />
-          <Property Type="String" Name="ProjectManager" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CostCentre" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="Week1" Nullable="true" />
-          <Property Type="Int32" Name="Week2" Nullable="true" />
-          <Property Type="Int32" Name="Week3" Nullable="true" />
-          <Property Type="Int32" Name="Week4" Nullable="true" />
-          <Property Type="Int32" Name="Week5" Nullable="true" />
-          <Property Type="Decimal" Name="Rate" Nullable="true" Precision="19" />
-          <Property Type="String" Name="PoNo" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="InvoiceNo" Nullable="true" MaxLength="20" />
-          <Property Type="Boolean" Name="AssociateStatus" Nullable="true" />
-          <Property Type="String" Name="UserRole" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="NoOfWeeks" Nullable="true" />
-        </ComplexType>
+          </ComplexType>
         <ComplexType Name="SP_PMOUserOrNot_Result">
-          <Property Type="String" Name="AssociateID" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="AssociateName" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="RacfID" Nullable="false" MaxLength="15" />
-          <Property Type="String" Name="ProjectManager" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CostCentre" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="Week1" Nullable="true" />
-          <Property Type="Int32" Name="Week2" Nullable="true" />
-          <Property Type="Int32" Name="Week3" Nullable="true" />
-          <Property Type="Int32" Name="Week4" Nullable="true" />
-          <Property Type="Int32" Name="Week5" Nullable="true" />
-          <Property Type="Decimal" Name="Rate" Nullable="true" Precision="19" />
-          <Property Type="String" Name="PoNo" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="InvoiceNo" Nullable="true" MaxLength="20" />
-          <Property Type="Boolean" Name="AssociateStatus" Nullable="true" />
-          <Property Type="String" Name="UserRole" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="NoOfWeeks" Nullable="true" />
-        </ComplexType>
+          </ComplexType>
         <EntityType Name="AssociateBilingDetail">
           <Key>
             <PropertyRef Name="AssociateID" />
@@ -290,23 +258,7 @@ warning 6002: The table/view 'JDCTSDB.dbo.AssociateBilingDetails' does not have 
           <NavigationProperty Name="MasterDataTable" Relationship="JDCTSDBModel.FK__Associate__Assoc__3D5E1FD2" FromRole="AssociateBilingDetail" ToRole="MasterDataTable" />
         </EntityType>
         <ComplexType Name="SP_UpdateBilling_Result">
-          <Property Type="String" Name="AssociateID" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="AssociateName" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="RacfID" Nullable="false" MaxLength="15" />
-          <Property Type="String" Name="ProjectManager" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CostCentre" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="UserRole" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="NoOfWeeks" Nullable="true" />
-          <Property Type="Int32" Name="Week1" Nullable="true" />
-          <Property Type="Int32" Name="Week2" Nullable="true" />
-          <Property Type="Int32" Name="Week3" Nullable="true" />
-          <Property Type="Int32" Name="Week4" Nullable="true" />
-          <Property Type="Int32" Name="Week5" Nullable="true" />
-          <Property Type="Decimal" Name="Rate" Nullable="true" Precision="19" />
-          <Property Type="String" Name="PoNo" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="InvoiceNo" Nullable="true" MaxLength="20" />
-          <Property Type="Boolean" Name="AssociateStatus" Nullable="true" />
-        </ComplexType>
+          </ComplexType>
         <EntityType Name="MasterDataTable">
           <Key>
             <PropertyRef Name="AssociateID" />
@@ -406,45 +358,13 @@ warning 6002: The table/view 'JDCTSDB.dbo.AssociateBilingDetails' does not have 
           <FunctionImportMapping FunctionImportName="SP_InsertAssociateBilling" FunctionName="JDCTSDBModel.Store.SP_InsertAssociateBilling">
             <ResultMapping>
               <ComplexTypeMapping TypeName="JDCTSDBModel.SP_InsertAssociateBilling_Result">
-                <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
-                <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
-                <ScalarProperty Name="RacfID" ColumnName="RacfID" />
-                <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
-                <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
-                <ScalarProperty Name="Week1" ColumnName="Week1" />
-                <ScalarProperty Name="Week2" ColumnName="Week2" />
-                <ScalarProperty Name="Week3" ColumnName="Week3" />
-                <ScalarProperty Name="Week4" ColumnName="Week4" />
-                <ScalarProperty Name="Week5" ColumnName="Week5" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="PoNo" ColumnName="PoNo" />
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="AssociateStatus" ColumnName="AssociateStatus" />
-                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
-                <ScalarProperty Name="NoOfWeeks" ColumnName="NoOfWeeks" />
-              </ComplexTypeMapping>
+                </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_PMOUserOrNot" FunctionName="JDCTSDBModel.Store.SP_PMOUserOrNot">
             <ResultMapping>
               <ComplexTypeMapping TypeName="JDCTSDBModel.SP_PMOUserOrNot_Result">
-                <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
-                <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
-                <ScalarProperty Name="RacfID" ColumnName="RacfID" />
-                <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
-                <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
-                <ScalarProperty Name="Week1" ColumnName="Week1" />
-                <ScalarProperty Name="Week2" ColumnName="Week2" />
-                <ScalarProperty Name="Week3" ColumnName="Week3" />
-                <ScalarProperty Name="Week4" ColumnName="Week4" />
-                <ScalarProperty Name="Week5" ColumnName="Week5" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="PoNo" ColumnName="PoNo" />
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="AssociateStatus" ColumnName="AssociateStatus" />
-                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
-                <ScalarProperty Name="NoOfWeeks" ColumnName="NoOfWeeks" />
-              </ComplexTypeMapping>
+                </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="JDCTSDBModel.Store.sp_renamediagram" />
@@ -462,23 +382,7 @@ warning 6002: The table/view 'JDCTSDB.dbo.AssociateBilingDetails' does not have 
           <FunctionImportMapping FunctionImportName="SP_UpdateBilling" FunctionName="JDCTSDBModel.Store.SP_UpdateBilling">
             <ResultMapping>
               <ComplexTypeMapping TypeName="JDCTSDBModel.SP_UpdateBilling_Result">
-                <ScalarProperty Name="AssociateID" ColumnName="AssociateID" />
-                <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
-                <ScalarProperty Name="RacfID" ColumnName="RacfID" />
-                <ScalarProperty Name="ProjectManager" ColumnName="ProjectManager" />
-                <ScalarProperty Name="CostCentre" ColumnName="CostCentre" />
-                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
-                <ScalarProperty Name="NoOfWeeks" ColumnName="NoOfWeeks" />
-                <ScalarProperty Name="Week1" ColumnName="Week1" />
-                <ScalarProperty Name="Week2" ColumnName="Week2" />
-                <ScalarProperty Name="Week3" ColumnName="Week3" />
-                <ScalarProperty Name="Week4" ColumnName="Week4" />
-                <ScalarProperty Name="Week5" ColumnName="Week5" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="PoNo" ColumnName="PoNo" />
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="AssociateStatus" ColumnName="AssociateStatus" />
-              </ComplexTypeMapping>
+                </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <EntitySetMapping Name="MasterDataTables">

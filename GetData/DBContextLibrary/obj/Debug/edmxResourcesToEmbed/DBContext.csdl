@@ -101,42 +101,8 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
-  <ComplexType Name="SP_InsertAssociateBilling_Result">
-    <Property Type="String" Name="AssociateID" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="AssociateName" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="RacfID" Nullable="false" MaxLength="15" />
-    <Property Type="String" Name="ProjectManager" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="CostCentre" Nullable="true" MaxLength="20" />
-    <Property Type="Int32" Name="Week1" Nullable="true" />
-    <Property Type="Int32" Name="Week2" Nullable="true" />
-    <Property Type="Int32" Name="Week3" Nullable="true" />
-    <Property Type="Int32" Name="Week4" Nullable="true" />
-    <Property Type="Int32" Name="Week5" Nullable="true" />
-    <Property Type="Decimal" Name="Rate" Nullable="true" Precision="19" />
-    <Property Type="String" Name="PoNo" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="InvoiceNo" Nullable="true" MaxLength="20" />
-    <Property Type="Boolean" Name="AssociateStatus" Nullable="true" />
-    <Property Type="String" Name="UserRole" Nullable="true" MaxLength="20" />
-    <Property Type="Int32" Name="NoOfWeeks" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="SP_PMOUserOrNot_Result">
-    <Property Type="String" Name="AssociateID" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="AssociateName" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="RacfID" Nullable="false" MaxLength="15" />
-    <Property Type="String" Name="ProjectManager" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="CostCentre" Nullable="true" MaxLength="20" />
-    <Property Type="Int32" Name="Week1" Nullable="true" />
-    <Property Type="Int32" Name="Week2" Nullable="true" />
-    <Property Type="Int32" Name="Week3" Nullable="true" />
-    <Property Type="Int32" Name="Week4" Nullable="true" />
-    <Property Type="Int32" Name="Week5" Nullable="true" />
-    <Property Type="Decimal" Name="Rate" Nullable="true" Precision="19" />
-    <Property Type="String" Name="PoNo" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="InvoiceNo" Nullable="true" MaxLength="20" />
-    <Property Type="Boolean" Name="AssociateStatus" Nullable="true" />
-    <Property Type="String" Name="UserRole" Nullable="true" MaxLength="20" />
-    <Property Type="Int32" Name="NoOfWeeks" Nullable="true" />
-  </ComplexType>
+  <ComplexType Name="SP_InsertAssociateBilling_Result" />
+  <ComplexType Name="SP_PMOUserOrNot_Result" />
   <EntityType Name="AssociateBilingDetail">
     <Key>
       <PropertyRef Name="AssociateID" />
@@ -147,24 +113,7 @@
     <Property Name="NumberHours" Type="Int32" />
     <NavigationProperty Name="MasterDataTable" Relationship="JDCTSDBModel.FK__Associate__Assoc__3D5E1FD2" FromRole="AssociateBilingDetail" ToRole="MasterDataTable" />
   </EntityType>
-  <ComplexType Name="SP_UpdateBilling_Result">
-    <Property Type="String" Name="AssociateID" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="AssociateName" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="RacfID" Nullable="false" MaxLength="15" />
-    <Property Type="String" Name="ProjectManager" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="CostCentre" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="UserRole" Nullable="true" MaxLength="20" />
-    <Property Type="Int32" Name="NoOfWeeks" Nullable="true" />
-    <Property Type="Int32" Name="Week1" Nullable="true" />
-    <Property Type="Int32" Name="Week2" Nullable="true" />
-    <Property Type="Int32" Name="Week3" Nullable="true" />
-    <Property Type="Int32" Name="Week4" Nullable="true" />
-    <Property Type="Int32" Name="Week5" Nullable="true" />
-    <Property Type="Decimal" Name="Rate" Nullable="true" Precision="19" />
-    <Property Type="String" Name="PoNo" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="InvoiceNo" Nullable="true" MaxLength="20" />
-    <Property Type="Boolean" Name="AssociateStatus" Nullable="true" />
-  </ComplexType>
+  <ComplexType Name="SP_UpdateBilling_Result" />
   <EntityType Name="MasterDataTable">
     <Key>
       <PropertyRef Name="AssociateID" />
